@@ -1,0 +1,24 @@
+name: Email Validator CI
+
+on:
+  push:
+    paths:
+      - 'email_validator.py'
+      - 'test_email_validator.py'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Run email validator tests
+        run: |
+          python -m unittest discover
