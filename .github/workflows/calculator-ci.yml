@@ -1,0 +1,24 @@
+name: Calculator CI
+
+on:
+  push:
+    paths:
+      - 'calculator.py'
+      - 'test_calculator.py'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Run calculator tests
+        run: |
+          python -m unittest discover
